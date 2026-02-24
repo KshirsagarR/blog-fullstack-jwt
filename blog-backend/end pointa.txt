@@ -1,0 +1,16 @@
+1]POST http://localhost:8083/api/auth/register  register user
+
+{
+  "username": "testuser",
+  "password": "1234"
+}
+
+2]GET http://localhost:8083/api/users/23  //GET USER BY ID
+
+3]POST http://localhost:8083/posts
+{
+  "title": "Hello",
+  "content": "My first post"
+}
+
+4]PUT 
