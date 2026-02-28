@@ -18,7 +18,7 @@ import com.example.manu.blogplatform.repository.PostRepo;
 	    @Autowired
 	    private PostRepo postRepo;
 
-	    // ✅ Create Post
+	    // Create Post
 	    @Override
 	    public Post createPost(Post post, User user) {
 	        post.setCreatedBy(user);
@@ -27,7 +27,7 @@ import com.example.manu.blogplatform.repository.PostRepo;
 	        return postRepo.save(post);
 	    }
 
-	    // ✅ Approved feed posts
+	    //Approved feed posts
 	    @Override
 	    public Page<Post> getApprovedPosts(int page, int size) {
 	        return postRepo.findByStatus(
@@ -36,7 +36,7 @@ import com.example.manu.blogplatform.repository.PostRepo;
 	        );
 	    }
 
-	    // ✅ My posts
+	    //My posts
 	    @Override
 	    public Page<Post> getMyPosts(User user, int page, int size) {
 	        return postRepo.findByCreatedBy(
@@ -45,7 +45,7 @@ import com.example.manu.blogplatform.repository.PostRepo;
 	        );
 	    }
 
-	    // ✅ Admin — pending posts
+	    // Admin pending posts
 	    @Override
 	    public Page<Post> getPendingPosts(int page, int size) {
 	        return postRepo.findByStatusOrderByCreatedAtDesc(
@@ -54,7 +54,7 @@ import com.example.manu.blogplatform.repository.PostRepo;
 	        );
 	    }
 
-	    // ✅ Approve
+	    //approve
 	    @Override
 	    public Post approvePost(Long postId) {
 	        Post post = postRepo.findById(postId)
@@ -64,7 +64,7 @@ import com.example.manu.blogplatform.repository.PostRepo;
 	        return postRepo.save(post);
 	    }
 
-	    // ✅ Reject
+	    // reject
 	    @Override
 	    public Post rejectPost(Long postId) {
 	        Post post = postRepo.findById(postId)
