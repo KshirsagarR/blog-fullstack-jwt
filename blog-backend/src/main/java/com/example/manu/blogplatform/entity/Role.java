@@ -22,7 +22,7 @@ import jakarta.persistence.Table;
 
 		public Role() {
 			super();
-			// TODO Auto-generated constructor stub
+			
 		}
 
 		public Role(String name) {
