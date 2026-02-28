@@ -21,25 +21,25 @@ public class SecurityConfig {
 
     private final JwtAuthenticationFilter jwtFilter;
 
-    // ✅ Constructor Injection (clean & correct way)
+    //  Constructor Injection 
     public SecurityConfig(JwtAuthenticationFilter jwtFilter) {
         this.jwtFilter = jwtFilter;
     }
 
-    // ✅ Password encoder
+    //  Password encoder
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
-    // ✅ AuthenticationManager for login
+    //  AuthenticationManager for login
     @Bean
     public AuthenticationManager authenticationManager(
             AuthenticationConfiguration configuration) throws Exception {
         return configuration.getAuthenticationManager();
     }
 
-    // ✅ Security filter chain
+    //  Security filter chain
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
@@ -56,7 +56,7 @@ public class SecurityConfig {
                 return corsConfig;
             }))
 
-            // 🔥 Stateless (VERY IMPORTANT for JWT)
+            
             .sessionManagement(session ->
                 session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             )
@@ -66,7 +66,7 @@ public class SecurityConfig {
                 .anyRequest().authenticated()
             )
 
-            // 🔥 Add JWT filter
+
             .addFilterBefore(jwtFilter,
                     UsernamePasswordAuthenticationFilter.class)
 
