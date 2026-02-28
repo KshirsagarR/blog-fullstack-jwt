@@ -70,7 +70,7 @@ import com.example.manu.blogplatform.repository.PostRepo;
 	        Post post = postRepo.findById(postId)
 	                .orElseThrow(() -> new RuntimeException("Post not found"));
 
-	        post.setStatus(Poststatus.PENDING); // or create REJECTED enum later
+	        post.setStatus(Poststatus.PENDING); 
 	        return postRepo.save(post);
 	    }
 	    
