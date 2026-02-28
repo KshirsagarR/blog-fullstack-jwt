@@ -10,19 +10,19 @@ import com.example.manu.blogplatform.entity.User;
 
 	public interface PostRepo extends JpaRepository<Post, Long> {
 
-	    // ✅ Approved posts → feeds page
+	    // Approved posts feed page
 	    
 		Page<Post> findByStatus(Poststatus status, Pageable pageable);
 
-	    // ✅ My posts → user dashboard
+	    // My posts
 	    
 		Page<Post> findByCreatedBy(User user, Pageable pageable);
 
-	    // ✅ Admin → pending posts
+	    // Admin pending posts status 
 	    
 		Page<Post> findByStatusOrderByCreatedAtDesc(Poststatus status, Pageable pageable);
 
-	    // ✅ Optional — approved posts except my own
+	    
 	    
 		Page<Post> findByStatusAndCreatedByNot(Poststatus status, User user, Pageable pageable);
 	}
