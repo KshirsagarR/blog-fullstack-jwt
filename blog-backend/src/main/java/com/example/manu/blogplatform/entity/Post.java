@@ -39,7 +39,7 @@ public class Post {
 
 		public Post() {
 			super();
-			// TODO Auto-generated constructor stub
+			
 		}
 
 		public Post(String title, String content, LocalDateTime createdAt, Poststatus status, User createdBy) {
