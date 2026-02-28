@@ -21,23 +21,6 @@ public class UserService implements Userservice_interface {
     
     @Autowired
     private PasswordEncoder passwordEncoder;
-
-  
-    
-
-//    @Override
-//    public User register(User user) {
-//
-//        Role role = roleRepository.findByName("USER");
-//
-//        if (role == null) {
-//            throw new RuntimeException("USER role not found");
-//        }
-//
-//        user.setRole(role);
-//
-//        return userRepository.save(user);
-//    }
   
   public User register(User user) {
 
@@ -46,7 +29,7 @@ public class UserService implements Userservice_interface {
 	        passwordEncoder.encode(user.getPassword())
 	    );
 
-	    // fetch role safely
+
 	    Role userRole = roleRepo.findByName("USER");
 
 	    if (userRole == null) {
