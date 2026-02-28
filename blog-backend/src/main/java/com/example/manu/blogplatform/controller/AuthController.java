@@ -13,17 +13,6 @@ import com.example.manu.blogplatform.entity.User;
 import com.example.manu.blogplatform.security.JwtUtil;
 import com.example.manu.blogplatform.service.UserService;
 
-//@RestController
-//	@RequestMapping("/api/auth")
-//	public class AuthController {
-//
-//	    @Autowired
-//	    private UserService userService;
-//
-//	    @PostMapping("/register")
-//	    public User register(@RequestBody User user) {
-//	        return userService.register(user);
-//	    }
 
 
 @RestController
@@ -33,11 +22,7 @@ public class AuthController {
     @Autowired
     private UserService userService;
 
-//    @PostMapping("/register")
-//    public User register(@RequestBody User user) {
-//        System.out.println("REGISTER API HIT");
-//        return userService.register(user);
-//    }
+
     
     @PostMapping("/register")
     public User register(@RequestBody User user) {
