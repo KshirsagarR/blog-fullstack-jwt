@@ -23,7 +23,7 @@ const handleCreatePost = async () => {
   if (response.ok) {
     setTitle("");
     setContent("");
-    fetchMyPosts(); // refresh list
+    fetchMyPosts(); //list
   } else {
     alert("Failed to create post");
   }
@@ -113,7 +113,7 @@ const handleUpdate = async (post) => {
     setPosts([]);
   };
 
-  //  CONDITIONAL RENDERING HERE
+  //  CONDITIONS
   if (!loggedIn) {
     return (
       <div style={{ padding: "40px" }}>
@@ -140,7 +140,7 @@ const handleUpdate = async (post) => {
     );
   }
 
-  //  IF LOGGED IN → SHOW POSTS PAGE
+  //  login and post page
   return (
     <div style={{ padding: "40px" }}>
       <h1>My Posts</h1>
@@ -167,10 +167,6 @@ const handleUpdate = async (post) => {
 <button onClick={handleCreatePost}>Create</button>
 
 <hr />
-
-
-
-
       <button onClick={fetchMyPosts}>Load My Posts</button>
       {/* <button onClick={handleLogout} style={{ marginLeft: "500px" }}>
         Logout
