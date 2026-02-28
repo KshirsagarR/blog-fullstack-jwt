@@ -19,7 +19,7 @@ public class JwtUtil {
 
     private final long EXPIRATION = 1000 * 60 * 60; // 1 hour
 
-    // 🔥 Generate Token
+    
     public String generateToken(String username) {
 
         return Jwts.builder()
@@ -30,17 +30,16 @@ public class JwtUtil {
                 .compact();
     }
 
-    // 🔥 Extract Username
+    
     public String extractUsername(String token) {
         return extractClaims(token).getSubject();
     }
 
-    // 🔥 Extract Expiration
+    
     public Date extractExpiration(String token) {
         return extractClaims(token).getExpiration();
     }
 
-    // 🔥 Validate Token (Correct Version)
     public boolean validateToken(String token, UserDetails userDetails) {
 
         final String username = extractUsername(token);
