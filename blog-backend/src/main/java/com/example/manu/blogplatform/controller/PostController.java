@@ -27,14 +27,14 @@ public class PostController {
 	  @Autowired
 	    private PostService postService;
 
-	    // ✅ create post (USER)
+	    // create post (USER)
 	    @PostMapping()
 	    public Post createPost(@RequestBody Post post,
 	    		@AuthenticationPrincipal CustomUserDetails cud ) {
 	        return postService.createPost(post, cud.getUser());
 	    }
 
-	    // ✅ my posts (USER + pagination)
+	    // my posts (USER + pagination)
 	    @GetMapping("/my")
 	    public Page<Post> myPosts(
 	            @AuthenticationPrincipal CustomUserDetails cud,
@@ -44,7 +44,7 @@ public class PostController {
 	        return postService.getMyPosts(cud.getUser(), page, size);
 	    }
 
-	    // ✅ approved feed (all users)
+	    //  approved feed (all users)
 	    @GetMapping("/feed")
 	    public Page<Post> feed(@RequestParam int page,
 	                           @RequestParam int size,
@@ -53,7 +53,7 @@ public class PostController {
 	        return postService.getApprovedPosts(page, size);
 	    }
 
-	    // ✅ update my post
+	    // update my post
 	    @PutMapping("/{id}")
 	    public Post update(@PathVariable Long id,
 	                       @RequestBody Post post,
@@ -61,16 +61,16 @@ public class PostController {
 	        return postService.updatePost(id,post, cud.getUser());
 	    }
 
-	    // ✅ delete my post
+	    // delete my post
 	    @DeleteMapping("/{id}")
 	    public void delete(@PathVariable Long id,
                 @AuthenticationPrincipal CustomUserDetails cud) {
 	        postService.deletePost(id, cud.getUser());
 	    }
 
-	    // ================= ADMIN =================
+	    // ADMIN
 
-	    // ✅ pending posts
+	    //  pending posts
 	    @PreAuthorize("hasRole('ADMIN')")
 	    @GetMapping("/admin/pending")
 	    public Page<Post> pending(@RequestParam int page,
@@ -78,14 +78,14 @@ public class PostController {
 	        return postService.getPendingPosts(page, size);
 	    }
 
-	    // ✅ approve post
+	    //  approve post
 	   @PreAuthorize("hasRole('ADMIN')")
 	    @PutMapping("/admin/{id}/approve")
 	    public Post approve(@PathVariable Long id) {
 	        return postService.approvePost(id);
 	    }
 
-	    // ✅ admin delete any post
+	    // admin delete any post
 	    @PreAuthorize("hasRole('ADMIN')")
 	    @DeleteMapping("/admin/{id}")
 	    public void adminDelete(@PathVariable Long id) {
